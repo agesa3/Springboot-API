@@ -13,6 +13,7 @@ public interface WebuserRepository extends JpaRepository<Webuser, Long>{
 	Webuser findByUsername(String username);
     
 	Optional<Webuser> findByEmployeeId(String employeeId);
-	
 
+
+    Optional<Webuser> findByUserNameOrEmailOrEmployeeIdOrcustomerId(String userName, String email, String employeeId, String customerId);
 }

@@ -3,6 +3,7 @@ package com.otblabs.springdevtest.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import com.otblabs.springdevtest.exception.ResourceNotFoundException;
 import com.otblabs.springdevtest.model.Webuser;
@@ -48,6 +49,12 @@ public class WebuserController {
 			// TODO : Add logic to check if Webuser with provided username, or
 			// email, or employeeId, or customerId exists.
 			// If exists, throw a Webuser with [?] exists Exception.
+			String user=webuser.getUsername();
+			String email=webuser.getEmail(); String employeeId=webuser.getEmployeeId();String customerId=webuser.getCustomerId();
+			Optional<Webuser> webUser= webuserRepository.findByUserNameOrEmailOrEmployeeIdOrcustomerId( user,  email,  employeeId,  customerId);
+			if (webUser.isPresent()) {
+				throw new Exception ("This "+webUser+" already exist");
+			}
 
 			return ResponseEntity.ok().body(webuserRepository.save(webuser));
 		} catch (Exception ex) {
