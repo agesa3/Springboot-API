@@ -49,12 +49,12 @@ public class WebuserController {
 			// TODO : Add logic to check if Webuser with provided username, or
 			// email, or employeeId, or customerId exists.
 			// If exists, throw a Webuser with [?] exists Exception.
-			String user=webuser.getUsername();
-			String email=webuser.getEmail(); String employeeId=webuser.getEmployeeId();String customerId=webuser.getCustomerId();
-			Optional<Webuser> webUser= webuserRepository.findByUserNameOrEmailOrEmployeeIdOrcustomerId( user,  email,  employeeId,  customerId);
-			if (webUser.isPresent()) {
-				throw new Exception ("This "+webUser+" already exist");
-			}
+//			String user=webuser.getUsername();
+//			String email=webuser.getEmail(); String employeeId=webuser.getEmployeeId();String customerId=webuser.getCustomerId();
+//			Optional<Webuser> webUser= webuserRepository.findByUserNameOrEmailOrEmployeeIdOrcustomerId( user,  email,  employeeId,  customerId);
+//			if (webUser.isPresent()) {
+//				throw new Exception ("This "+webUser+" already exist");
+//			}
 
 			return ResponseEntity.ok().body(webuserRepository.save(webuser));
 		} catch (Exception ex) {
